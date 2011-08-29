@@ -1,7 +1,6 @@
 package net.res0l.openra.OpenRAGraphics;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 import net.res0l.openra.OpenRAFileFormat.Vertex;
@@ -24,14 +23,14 @@ public class SpriteRenderer implements Renderer.IBatchRenderer
 			
 	public void DrawSprite(Sprite s, Vector2 location, WorldRenderer wr, String palette)
 	{
-		Rectangle size = s.getBoundingRectangle();
+		Vector2 s_size = new Vector2(s.getWidth(), s.getHeight());
 		
-		DrawSprite(s, location, wr.GetPaletteIndex(palette), new Vector2(size.getWidth(), size.getHeight()));
+		DrawSprite(s, location, wr.GetPaletteIndex(palette), s_size);
 	}
 	
-	public void DrawSprite(Sprite s, Vector2 location, WorldRenderer wr, String palette, Rectangle size)
+	public void DrawSprite(Sprite s, Vector2 location, WorldRenderer wr, String palette, Vector2 size)
 	{
-		DrawSprite(s, location, wr.GetPaletteIndex(palette), new Vector2(size.getWidth(), size.getHeight()));
+		DrawSprite(s, location, wr.GetPaletteIndex(palette), size);
 	}
 	
 	public void DrawSprite(Sprite s, Vector2 location, int paletteIndex, Vector2 size)
@@ -44,16 +43,16 @@ public class SpriteRenderer implements Renderer.IBatchRenderer
 	// For RGBASpriteRenderer, which doesn't use palettes
 	public void DrawSprite(Sprite s, Vector2 location)
 	{
-		Rectangle size = s.getBoundingRectangle();
+		Vector2 s_size = new Vector2(s.getWidth(), s.getHeight());
 		
-		DrawSprite(s, location, 0, new Vector2(size.getWidth(), size.getHeight()));
+		DrawSprite(s, location, 0, s_size);
 	}
 	
 	public void DrawSprite(Sprite s, Vector2 location, Vector2 size)
 	{
 		DrawSprite(s, location, 0, size);
 	}
-
+	
 	public void Flush() {
 
 	}

@@ -7,8 +7,7 @@ public class Server {
 
 	public int ListenPort;
 
-	public Server(net.res0l.openra.ModData modData,
-			net.res0l.openra.OpenRAGameRules.Settings settings, String map) {
+	public Server(ModData modData, Settings settings, String map) {
 		// TODO Auto-generated constructor stub
 	}
 
