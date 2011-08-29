@@ -13,4 +13,13 @@ public class WorldRenderer {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public int GetPaletteIndex(String palette) {
+		return 0;
+	}
+
+	public void Draw() {
+		// TODO Auto-generated method stub
+		
+	}
 }
