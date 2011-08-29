@@ -1,0 +1,103 @@
+Selectable: True
+
+MapFormat: 5
+
+RequiresMod: cnc
+
+Title: East vs West 3
+
+Description: 3v3 Team Map
+
+Author: Paul Chote
+
+Tileset: WINTER
+
+MapSize: 96,56
+
+Bounds: 8,8,76,40
+
+UseAsShellmap: False
+
+Type: Conquest
+
+Players:
+	PlayerReference@Neutral:
+		Name: Neutral
+		Palette: neutral
+		OwnsWorld: True
+		NonCombatant: True
+		Race: gdi
+	PlayerReference@Multi0:
+		Name: Multi0
+		Playable: True
+		DefaultStartingUnits: True
+		Race: Random
+		Enemies: Creeps
+	PlayerReference@Multi1:
+		Name: Multi1
+		Playable: True
+		DefaultStartingUnits: True
+		Race: Random
+		Enemies: Creeps
+	PlayerReference@Multi2:
+		Name: Multi2
+		Playable: True
+		DefaultStartingUnits: True
+		Race: Random
+		Enemies: Creeps
+	PlayerReference@Multi3:
+		Name: Multi3
+		Playable: True
+		DefaultStartingUnits: True
+		Race: Random
+		Enemies: Creeps
+	PlayerReference@Multi4:
+		Name: Multi4
+		Playable: True
+		DefaultStartingUnits: True
+		Race: Random
+		Enemies: Creeps
+	PlayerReference@Multi5:
+		Name: Multi5
+		Playable: True
+		DefaultStartingUnits: True
+		Race: Random
+		Enemies: Creeps
+	PlayerReference@Creeps:
+		Name: Creeps
+		NonCombatant: True
+		Race: Random
+		Enemies: Multi0,Multi1,Multi2,Multi3,Multi4,Multi5
+
+Actors:
+	wp7: mpspawn
+		Location: 73,33
+		Owner: Neutral
+	Actor5: mpspawn
+		Location: 17,20
+		Owner: Neutral
+	wp1: mpspawn
+		Location: 73,20
+		Owner: Neutral		
+	Actor7: mpspawn
+		Location: 63,27
+		Owner: Neutral
+	Actor8: mpspawn
+		Location: 17,33
+		Owner: Neutral
+	Actor40: mpspawn
+		Location: 27,27
+		Owner: Neutral
+	Actor0: bio
+		Location: 45,27
+		Owner: Neutral
+
+Smudges:
+
+Rules:
+
+Sequences:
+
+Weapons:
+
+Voices:

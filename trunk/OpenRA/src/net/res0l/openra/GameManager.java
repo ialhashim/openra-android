@@ -13,7 +13,15 @@ public class GameManager implements ApplicationListener {
 	SpriteBatch spriteBatch;
 	BitmapFont font;
 	
-	public void create() {
+	Game g;
+	
+	Screen screen;
+	Input input = new Input();
+	
+	private float accum = 0; // timing
+
+	public void create() 
+	{
 		font = new BitmapFont();
 		font.setColor(Color.WHITE);
 		spriteBatch = new SpriteBatch();
@@ -21,17 +29,28 @@ public class GameManager implements ApplicationListener {
 		String[] args = new String[0];
 
 		Game.Initialize( new Arguments(args) );
+		g = new Game();
+		
+		screen = new MainScreen();
 	}
 
 	public void render() {
-		
-		Gdx.graphics.getGL10().glClear(GL10.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+        
+        accum += Gdx.graphics.getDeltaTime();
+        
+        while (accum > 1.0f / 60.0f) 
+        {
+			screen.tick(input);
+			input.tick();
+			accum -= 1.0f / 60.0f;
+        }
+        
+        screen.render();
 		
 		spriteBatch.begin();
 		font.draw(spriteBatch, "Hello World!", 100, 100);
 		spriteBatch.end();
-		
-		
 	}
 
 	public void resize(int width, int height) {

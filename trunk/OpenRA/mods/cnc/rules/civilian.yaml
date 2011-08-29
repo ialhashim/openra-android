@@ -1,0 +1,287 @@
+V01:
+	Inherits: ^CivBuilding
+	RenderBuilding:
+		OverrideTileset: DESERT
+		OverrideImage: v25
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Tooltip:
+		Name: Church
+
+V02:
+	Inherits: ^CivBuilding
+	RenderBuilding:
+		OverrideTileset: DESERT
+		OverrideImage: v20
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+
+V03:
+	Inherits: ^CivBuilding
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderBuilding:
+		OverrideTileset: DESERT
+		OverrideImage: v21
+
+V04:
+	Inherits: ^CivBuilding
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderBuilding:
+		OverrideTileset: DESERT
+		OverrideImage: v24
+
+V05:
+	Inherits: ^CivBuilding
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	RenderBuilding:
+		OverrideTileset: DESERT
+		OverrideImage: v22
+
+V06:
+	Inherits: ^CivBuilding
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	RenderBuilding:
+		OverrideTileset: DESERT
+		OverrideImage: v26
+
+V07:
+	Inherits: ^CivBuilding
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	RenderBuilding:
+		OverrideTileset: DESERT
+		OverrideImage: v30
+
+V08:
+	Inherits: ^CivBuilding
+	RenderBuilding:
+		OverrideTileset: DESERT
+		OverrideImage: v23
+
+V09:
+	Inherits: ^CivBuilding
+	RenderBuilding:
+		OverrideTileset: DESERT
+		OverrideImage: v27
+
+V10:
+	Inherits: ^CivBuilding
+	RenderBuilding:
+		OverrideTileset: DESERT
+		OverrideImage: v28
+
+V11:
+	Inherits: ^CivBuilding
+	RenderBuilding:
+		OverrideTileset: DESERT
+		OverrideImage: v29
+
+V12:
+	Inherits: ^CivBuilding
+	RenderBuilding:
+		OverrideTileset: DESERT
+		OverrideImage: v34
+
+V13:
+	Inherits: ^CivBuilding
+	RenderBuilding:
+		OverrideTileset: DESERT
+		OverrideImage: v35
+
+V14:
+	Inherits: ^CivField
+
+V15:
+	Inherits: ^CivField
+
+V16:
+	Inherits: ^CivField
+
+V17:
+	Inherits: ^CivField
+
+V18:
+	Inherits: ^CivField
+
+V31:
+	Inherits: ^CivBuilding
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	RenderBuilding:
+		Image: v05
+		OverrideTileset: DESERT
+		OverrideImage: v31
+V32:
+	Inherits: ^CivBuilding
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	RenderBuilding:
+		Image: v05
+		OverrideTileset: DESERT
+		OverrideImage: v32
+V33:
+	Inherits: ^CivBuilding
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	RenderBuilding:
+		Image: v05
+		OverrideTileset: DESERT
+		OverrideImage: v33
+
+ARCO:
+	Inherits: ^CivBuilding
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	RenderBuilding:
+
+BARB:
+	Inherits: ^Wall
+	Health:
+		HP: 100
+	Armor:
+		Type: Light
+	Tooltip:
+		Name: Wire Fence
+		Icon: barbicnh
+
+WOOD:
+	Inherits: ^Wall
+	Health:
+		HP: 100
+		Armor:
+			Type: Wood
+		Tooltip:
+		Name: Wooden Fence
+		Icon: woodicnh
+
+BRIDGE1:
+	Inherits: ^Bridge
+	Bridge:
+		Template: 165
+		DestroyedTemplate: 166
+	Building:
+		Footprint: ____ ____ ____ ____
+		Dimensions: 4,4
+
+BRIDGE2:
+	Inherits: ^Bridge
+	Bridge:
+		Template: 167
+		DestroyedTemplate: 168
+	Building:
+		Footprint: _____ _____ _____ _____ _____
+		Dimensions: 5,5
+
+BRIDGE3:
+	Inherits: ^Bridge
+	Bridge:
+		Template: 169
+		DestroyedTemplate: 170
+	Building:
+		Footprint: ______ ______ ______ ______ ______
+		Dimensions: 6,5
+
+BRIDGE4:
+	Inherits: ^Bridge
+	Bridge:
+		Template: 171
+		DestroyedTemplate: 172
+	Building:
+		Footprint: ______ ______ ______ ______
+		Dimensions: 6,4
+
+C1:
+	Inherits: ^CivInfantry
+	Selectable:
+		Voice: CivilianMaleVoice
+
+C2:
+	Inherits: ^CivInfantry
+	Selectable:
+		Voice: CivilianFemaleVoice
+
+C3:
+	Inherits: ^CivInfantry
+
+C4:
+	Inherits: ^CivInfantry
+	Selectable:
+		Voice: CivilianFemaleVoice
+
+C5:
+	Inherits: ^CivInfantry
+
+C6:
+	Inherits: ^CivInfantry
+	Selectable:
+		Voice: CivilianFemaleVoice
+
+C7:
+	Inherits: ^CivInfantry
+
+C8:
+	Inherits: ^CivInfantry
+	Selectable:
+		Voice: CivilianFemaleVoice
+
+C9:
+	Inherits: ^CivInfantry
+
+C10:
+	Inherits: ^CivInfantry
+	Selectable:
+		Voice: CivilianFemaleVoice
+
+VICE:
+	AppearsOnRadar:
+	Health:
+		Radius: 3
+		HP: 400
+	Armor:
+		Type: Wood
+	RevealsShroud:
+		Range: 4
+	Mobile:
+		Speed: 5
+		TerrainSpeeds:
+			Clear: 90
+			Rough: 80
+			Road: 100
+			Tiberium: 70
+			BlueTiberium: 70
+			Beach: 80
+	Selectable:
+		Voice: GenericVoice
+	TargetableUnit:
+		TargetTypes: Ground
+	AutoTarget:
+		ScanRadius: 4
+	AttackMove:
+	HiddenUnderFog:
+	GainsExperience:
+	GivesExperience:
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Viceroid
+	AttackFrontal:
+		PrimaryWeapon: Chemspray
+	AttackWander:
+	RenderUnit:
+		Smokes: False
+	WithMuzzleFlash:
