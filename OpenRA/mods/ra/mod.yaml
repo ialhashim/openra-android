@@ -1,0 +1,88 @@
+Metadata:
+	Title: Red Alert
+	Description: OpenRA Reimagining of the classic game
+	Version: {DEV_VERSION}
+	Author: The OpenRA Developers
+	Standalone: true
+
+Folders:
+	.
+	./mods/ra
+	./mods/ra/bits
+	./mods/ra/uibits
+	~./mods/ra/packages
+	~^/Content/ra
+
+Packages:
+	~main.mix
+	redalert.mix
+	conquer.mix
+	hires.mix
+	local.mix
+	sounds.mix
+	speech.mix
+	allies.mix
+	russian.mix
+	temperat.mix
+	snow.mix
+	interior.mix
+	~scores.mix
+	~movies1.mix
+	~movies2.mix
+
+Rules:
+	mods/ra/rules/defaults.yaml
+	mods/ra/rules/system.yaml
+	mods/ra/rules/vehicles.yaml
+	mods/ra/rules/structures.yaml
+	mods/ra/rules/infantry.yaml
+	mods/ra/rules/civilian.yaml
+	mods/ra/rules/trees.yaml
+	mods/ra/rules/aircraft.yaml
+	mods/ra/rules/ships.yaml
+
+Sequences:
+	mods/ra/sequences.yaml
+
+Cursors:
+	mods/ra/cursors.yaml
+
+Chrome:
+	mods/ra/chrome.yaml
+	
+Assemblies:
+	mods/ra/OpenRA.Mods.RA.dll
+
+ChromeLayout:
+	mods/ra/chrome/gameinit.yaml
+	mods/ra/chrome/ingame.yaml
+	mods/ra/chrome/mainmenu.yaml
+	mods/ra/chrome/videoplayer.yaml
+	mods/ra/chrome/settings.yaml
+	mods/ra/chrome/gamelobby.yaml
+	mods/ra/chrome/serverbrowser.yaml
+	mods/ra/chrome/replaybrowser.yaml
+
+Weapons:
+	mods/ra/weapons.yaml
+	
+Voices:
+	mods/ra/voices.yaml
+	
+TileSets:
+	mods/ra/tilesets/snow.yaml
+	mods/ra/tilesets/interior.yaml
+	mods/ra/tilesets/temperat.yaml
+
+Music:
+	mods/ra/music.yaml
+
+Movies:
+	mods/ra/movies1.yaml
+	mods/ra/movies2.yaml
+
+LoadScreen: RALoadScreen
+ServerTraits:
+	PlayerCommands
+	LobbyCommands
+	MasterServerPinger

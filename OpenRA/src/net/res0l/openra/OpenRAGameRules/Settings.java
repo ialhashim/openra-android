@@ -1,7 +1,9 @@
 package net.res0l.openra.OpenRAGameRules;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
@@ -59,6 +61,7 @@ public class Settings {
 	public class GameSettings
 	{
 		public String[] Mods = { "ra" };
+			
 		public boolean MatchTimer = true;
 		
 		// Chat settings

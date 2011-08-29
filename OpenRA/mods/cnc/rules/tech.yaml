@@ -1,0 +1,60 @@
+# Oil Derrick
+V19:
+	Inherits: ^CivBuilding
+	RenderBuilding:
+		Palette: staticterrain
+	CashTrickler:
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	RevealsShroud:
+		Range: 3
+	-DeadBuildingState:
+	Capturable:
+	Tooltip:
+		Name: Oil Derrick
+	LeavesHusk: 
+		HuskActor: V19.Husk
+
+V19.Husk:
+	Inherits: ^CivBuilding
+	-DeadBuildingState:
+	-Health:
+	RenderBuilding:
+		Palette: staticterrain
+	WithFire:
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Tooltip:
+		Name: Oil Derrick
+
+# Hospital
+HOSP:
+	Inherits: ^CivBuilding
+	RenderBuilding:
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Tooltip:
+		Name: Hospital
+
+# Bio Lab
+BIO:
+	Inherits: ^CivBuilding
+	RenderBuilding:
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Tooltip:
+		Name: Bio Lab
+
+# Prison / Tech Center
+MISS:
+	Inherits: ^CivBuilding
+	RenderBuilding:
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+	Tooltip:
+		Name: Tech Center

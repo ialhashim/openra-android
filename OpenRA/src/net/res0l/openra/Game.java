@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.*;
@@ -16,6 +17,7 @@ import net.res0l.openra.InputHandler.DefaultInputHandler.Modifiers;
 import net.res0l.openra.OpenRAFileFormat.ActionQueue;
 import net.res0l.openra.OpenRAFileFormat.FileSystem;
 import net.res0l.openra.OpenRAFileFormat.Graphics.WindowMode;
+import net.res0l.openra.OpenRAFileFormat.Mod;
 import net.res0l.openra.OpenRAGame.*;
 import net.res0l.openra.OpenRAGraphics.*;
 import net.res0l.openra.OpenRAGameRules.*;
@@ -198,6 +200,8 @@ public class Game
 	{
 		return orderManager.Connection.LocalClientId == 0;
 	}
+	
+	public static Map<String, Mod> CurrentMods = Mod.AllMods;
 
 	Modifiers modifiers;
 	public Modifiers GetModifierKeys() { return modifiers; }
@@ -219,7 +223,9 @@ public class Game
 		Renderer.SheetSize = Settings.Game.SheetSize;
 		
 		Console.WriteLine("Available mods:");
-	
+		for (String n : Settings.Game.Mods)
+			Console.WriteLine(n);
+		
 		Sound.Create();
 		InitializeWithMods(Settings.Game.Mods);
 	}
@@ -235,9 +241,9 @@ public class Game
 			orderManager.dispose();
 		
 		// Discard any invalid mods
-		//var mm = mods.Where( m => Mod.AllMods.ContainsKey( m ) ).ToArray();
-		String[] mm = mods;
+		String[] mm = Mod.AllMods.keySet().toArray(new String[0]);
 		Settings.Game.Mods = mm;
+	
 		Settings.Save();
 	
 		Sound.StopMusic();
