@@ -31,7 +31,7 @@ public class Game
 {
 	public Utilities Utilities;
 	
-	public static ModData modData;
+	public static ModData modData = new ModData(null);
 	public static int CellSize() { return modData.Manifest.TileSize; }
 
 	public static WorldRenderer worldRenderer;
