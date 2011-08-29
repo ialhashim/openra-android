@@ -1,5 +1,7 @@
 package net.res0l.openra;
 
+import net.res0l.openra.Support.Arguments;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -16,6 +18,8 @@ public class GameManager implements ApplicationListener {
 		font.setColor(Color.WHITE);
 		spriteBatch = new SpriteBatch();
 		
+		String[] args = new String[0];
+
 		Game.Initialize( new Arguments(args) );
 	}
 

@@ -15,6 +15,7 @@ import net.res0l.openra.InputHandler.DefaultInputHandler;
 import net.res0l.openra.InputHandler.DefaultInputHandler.Modifiers;
 import net.res0l.openra.OpenRAFileFormat.ActionQueue;
 import net.res0l.openra.OpenRAFileFormat.FileSystem;
+import net.res0l.openra.OpenRAFileFormat.Graphics.WindowMode;
 import net.res0l.openra.OpenRAGame.*;
 import net.res0l.openra.OpenRAGraphics.*;
 import net.res0l.openra.OpenRAGameRules.*;
@@ -30,8 +31,8 @@ public class Game
 {
 	public Utilities Utilities;
 	
-	public ModData modData;
-	public int CellSize() { return modData.Manifest.TileSize; }
+	public static ModData modData;
+	public static int CellSize() { return modData.Manifest.TileSize; }
 
 	public static WorldRenderer worldRenderer;
 	public static Renderer Renderer;
@@ -70,7 +71,7 @@ public class Game
 		return dateFormat.format(date) + ".rep";
 	}
 	
-	 void JoinInner(OrderManager om)
+	static void JoinInner(OrderManager om)
 	{
 		orderManager = om;
 		lastConnectionState = ConnectionState.PreConnecting;
@@ -86,7 +87,7 @@ public class Game
 		JoinInner(new OrderManager("<no server>", -1, new ReplayConnection(replayFile)));
 	}
 	
-	void JoinLocal()
+	static void JoinLocal()
 	{
 		JoinInner(new OrderManager("<no server>", -1, new EchoConnection()));
 	}
@@ -128,7 +129,7 @@ public class Game
 		// Render
 		++RenderFrame;
 		viewport.DrawRegions(worldRenderer, new DefaultInputHandler( orderManager.world ));
-		Sound.SetListenerPosition(viewport.Location.add(new Vector2(viewport.Width, viewport.Height).mul(0.5f)));
+		Sound.SetListenerPosition(viewport.Location().add(new Vector2(viewport.Width(), viewport.Height()).mul(0.5f)));
 		
 		MasterServerQuery.Tick();
 	}
@@ -202,7 +203,7 @@ public class Game
 	public Modifiers GetModifierKeys() { return modifiers; }
 	void HandleModifierKeys(Modifiers mods) { modifiers = mods; }
 	
-	void Initialize(Arguments args)
+	static void Initialize(Arguments args)
 	{
 		String defaultSupport = "OpenRA"; // path
 	
@@ -214,7 +215,7 @@ public class Game
 		FileSystem.Mount("."); // Needed to access shaders
 		
 		Renderer = new Renderer();
-		Renderer.Initialize( "fullScreen" );
+		Renderer.Initialize( WindowMode.Fullscreen );
 		Renderer.SheetSize = Settings.Game.SheetSize;
 		
 		Console.WriteLine("Available mods:");
@@ -223,7 +224,7 @@ public class Game
 		InitializeWithMods(Settings.Game.Mods);
 	}
 	
-	public void InitializeWithMods(String[] mods)
+	public static void InitializeWithMods(String[] mods)
 	{
 		// Clear  state if we have switched mods
 		LobbyInfoChanged ();

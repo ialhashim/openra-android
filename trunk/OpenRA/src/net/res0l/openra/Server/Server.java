@@ -1,6 +1,6 @@
 package net.res0l.openra.Server;
 
-import net.res0l.openra.ModData;
+import net.res0l.openra.OpenRAGame.ModData;
 
 public class Server {
 

@@ -3,7 +3,6 @@ package net.res0l.openra.OpenRANetwork;
 import com.badlogic.gdx.utils.Disposable;
 
 import net.res0l.openra.World;
-import net.res0l.openra.OpenRANetwork.ReplayConnection.ReplayRecorderConnection;
 
 public class OrderManager implements Disposable {
 
