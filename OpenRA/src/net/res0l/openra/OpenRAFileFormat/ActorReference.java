@@ -2,6 +2,9 @@ package net.res0l.openra.OpenRAFileFormat;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
+
+import org.yaml.snakeyaml.Yaml;
 
 public class ActorReference implements Iterable
 {
@@ -10,30 +13,34 @@ public class ActorReference implements Iterable
 
 	public ActorReference( String type )
 	{
-		this( type, new HashMap<String, MiniYaml>() );
+		this( type, new HashMap<String, Yaml>() );
 	}
 
-	public ActorReference( String type, Map<String, MiniYaml> inits )
+	public ActorReference( String type, HashMap<String, Yaml> inits )
 	{
 		Type = type;
 		InitDict = new TypeDictionary();
 		
-		for( var i : inits )
-			InitDict.Add( LoadInit( i.Key, i.Value ) );
+	    Iterator it = inits.entrySet().iterator();
+		
+	    while (it.hasNext()) {
+	        Map.Entry pairs = (Map.Entry)it.next();
+	        InitDict.Add( LoadInit( pairs.getKey(), pairs.getValue()));
+	    }
 	}
 
-	static IActorInit LoadInit(String traitName, MiniYaml my)
+	static IActorInit LoadInit(String traitName, Yaml my)
 	{
 		var info = Game.CreateObject<IActorInit>(traitName + "Init");
 		FieldLoader.Load(info, my);
 		return info;
 	}
 
-	public MiniYaml Save()
+	public Yaml Save()
 	{
-		var ret = new MiniYaml( Type );
+		Yaml ret = new Yaml( Type );
 		
-		foreach( var init : InitDict )
+		for( var init : InitDict )
 		{
 			var initName = init.GetType().Name;
 			ret.Nodes.Add( new MiniYamlNode( initName.SubString( 0, initName.Length - 4 ), FieldSaver.Save( init ) ) );
@@ -44,9 +51,4 @@ public class ActorReference implements Iterable
 
 	// for initialization syntax
 	public void Add( Object o ) { InitDict.Add( o ); }
-
-	@Override
-	public Iterator iterator() {
-		return InitDict.GetEnumerator();
-	}
 }
