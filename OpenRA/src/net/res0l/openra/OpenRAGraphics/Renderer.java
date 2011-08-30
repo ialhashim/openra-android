@@ -20,7 +20,7 @@ public class Renderer {
 
 	public Vector2 Resolution = new Vector2();
 
-	public int SheetSize;
+	public static int SheetSize = 0;
 
 	IShader SpriteShader;    /* note: shared shader params */
 	IShader LineShader;

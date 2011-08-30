@@ -1,6 +1,7 @@
 package net.res0l.openra.OpenRAFileFormat;
 
 import net.res0l.openra.Action;
+import net.res0l.openra.Bitmap;
 import net.res0l.openra.InputHandler.DefaultInputHandler;
 
 import com.badlogic.gdx.graphics.Color;
@@ -49,7 +50,7 @@ public interface IGraphicsDevice {
 
 	public interface ITexture
 	{
-		void SetData(Image image);
+		void SetData(Bitmap bitmap);
 		void SetData(long[][] colors);
 		void SetData(byte[] colors, int width, int height);
 	}

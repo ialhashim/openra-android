@@ -2,7 +2,7 @@ package net.res0l.openra.OpenRAWidget;
 
 import java.util.Map;
 
-import net.res0l.openra.ModData;
+import net.res0l.openra.OpenRAGame.*;;
 
 public class WidgetLoader {
 
