@@ -1,77 +1,87 @@
 package net.res0l.openra.OpenRAFileFormat;
 
 import java.util.HashMap;
+import java.lang.reflect.*;
+
+import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.List;
 import java.util.Map;
 
 public class TypeDictionary<T> 
 {
-	Map<Class<?>, Object> dataSingular = new HashMap<Class<?>, Object>();
-	Map<Class<?>, List<Object>> dataMultiple = new HashMap<Class<?>, List<Object>>();
+	HashMap<Type, Object> dataSingular = new HashMap<Type, Object>();
+	HashMap<Type, List<Object>> dataMultiple = new HashMap<Type, List<Object>>();
 
 	public void Add( Object val )
 	{
-		Class<?> t = val.getClass();
+		Type t = val.getClass();
 
-		for( Class<?> i : t.getInterfaces() )
-			Innerput( i, val );
+		for( Class<?> i : val.getClass().getInterfaces() )
+			InnerAdd( i, val );
 				
-		for( var tt : t.BaseTypes() )
-			Innerput( tt, val );
+		for( Class<?> tt : val.getClass().getSuperclass().getClasses() )
+			InnerAdd( tt, val );
 	}
-	
-	void Innerput( Class<?> i, Object val )
-	{
-		List<Object> objs;
-		Object obj;
 
-		if( dataMultiple.TryGetValue( i, out objs ) )
-			objs.put( val );
-		else if( dataSingular.TryGetValue( i, out obj ) )
+	@SuppressWarnings("serial")
+	void InnerAdd( Type t, Object val )
+	{
+		ArrayList<Object> objs = new ArrayList<Object>();
+
+		if( dataMultiple.containsKey(t) )
 		{
-			dataSingular.Remove( i );
-			dataMultiple.put( i, new List<Object> { obj, val } );
+			objs.add( val );
+		}
+		else if( dataSingular.containsKey(t) )
+		{
+			dataSingular.remove( t );
+			
+			ArrayList<Object> aa = new ArrayList<Object>();
+			aa.add(dataSingular.get(t));
+			aa.add(val);
+			
+			dataMultiple.put( t,  aa);
 		}
 		else
-			dataSingular.put( i, val );
+			dataSingular.put( t, val );
 	}
 
-	public boolean Contains()
+	public boolean Contains(Type t)
 	{
-		return dataSingular.containsKey( T ) || dataMultiple.containsKey( T );
+		return dataSingular.containsKey( t ) || dataMultiple.containsKey( t );
 	}
 
-	public T Get()
+	@SuppressWarnings("unchecked")
+	public T Get(Type t)
 	{
-
-		Object ret;
-		if( !dataSingular.TryGetValue( T, ret ) )
+		Object ret = dataSingular.get(t);
+		
 		return (T)ret;
 	}
 
-	public T GetOrDefault()
+	@SuppressWarnings("unchecked")
+	public T GetOrDefault(Type t)
 	{
-		Object ret;
-		if( !dataSingular.TryGetValue( T, ret ) )
-			return default( T );
-		return (T)ret;
+		if( !dataSingular.containsKey( t ) )
+			return (T) t.getClass().cast(t);
+		
+		return (T)dataSingular.get(t);
 	}
 
-	public Iterable<T> WithInterface()
+	@SuppressWarnings("unchecked")
+	public Iterable<T> WithInterface(Type t)
 	{
-		List<Object> objs;
-		Object obj;
-
-		if( dataMultiple.TryGetValue( T, out objs ) )
-			return objs.Cast<T>();
-		else if( dataSingular.TryGetValue( T, out obj ) )
-			return new T[] { (T)obj };
+		if( dataMultiple.containsKey(t) )
+			return (Iterable<T>) dataMultiple.get(t);
+		else if( dataSingular.containsKey(t) )
+			return (Iterable<T>) dataSingular.get(t);
 		else
-			return new T[ 0 ];
+			return null;
 	}
 
 	public Iterable GetEnumerator()
 	{
-		return WithInterface().GetEnumerator();
+		return null;
 	}
 }
