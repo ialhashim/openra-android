@@ -1,8 +1,8 @@
 package net.res0l.openra.OpenRAGraphics;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 
+import net.res0l.openra.Size;
 import net.res0l.openra.OpenRAFileFormat.Vertex;
 import net.res0l.openra.OpenRAFileFormat.IGraphicsDevice.*;
 
@@ -21,19 +21,17 @@ public class SpriteRenderer implements Renderer.IBatchRenderer
 		this.shader = shader;
 	}
 			
-	public void DrawSprite(Sprite s, Vector2 location, WorldRenderer wr, String palette)
+	public void DrawSprite(OpenRASprite s, Vector2 location, WorldRenderer wr, String palette)
 	{
-		Vector2 s_size = new Vector2(s.getWidth(), s.getHeight());
-		
-		DrawSprite(s, location, wr.GetPaletteIndex(palette), s_size);
+		DrawSprite(s, location, wr.GetPaletteIndex(palette), s.size);
 	}
 	
-	public void DrawSprite(Sprite s, Vector2 location, WorldRenderer wr, String palette, Vector2 size)
+	public void DrawSprite(OpenRASprite s, Vector2 location, WorldRenderer wr, String palette, Size size)
 	{
 		DrawSprite(s, location, wr.GetPaletteIndex(palette), size);
 	}
 	
-	public void DrawSprite(Sprite s, Vector2 location, int paletteIndex, Vector2 size)
+	public void DrawSprite(OpenRASprite s, Vector2 location, int paletteIndex, Size size)
 	{
 		Renderer.batch.begin();
 		s.draw(Renderer.batch);
@@ -41,14 +39,12 @@ public class SpriteRenderer implements Renderer.IBatchRenderer
 	}
 	
 	// For RGBASpriteRenderer, which doesn't use palettes
-	public void DrawSprite(Sprite s, Vector2 location)
+	public void DrawSprite(OpenRASprite s, Vector2 location)
 	{
-		Vector2 s_size = new Vector2(s.getWidth(), s.getHeight());
-		
-		DrawSprite(s, location, 0, s_size);
+		DrawSprite(s, location, 0, s.size);
 	}
 	
-	public void DrawSprite(Sprite s, Vector2 location, Vector2 size)
+	public void DrawSprite(OpenRASprite s, Vector2 location, Size size)
 	{
 		DrawSprite(s, location, 0, size);
 	}

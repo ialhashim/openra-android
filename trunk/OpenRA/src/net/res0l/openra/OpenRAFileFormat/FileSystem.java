@@ -7,4 +7,13 @@ public final class FileSystem {
 	{
 		SupportDir = name;
 	}
+
+	public static void Unmount(IFolder previousMapMount) {
+		
+	}
+
+	public static void Mount(IFolder previousMapMount) {
+		// TODO Auto-generated method stub
+		
+	}
 }

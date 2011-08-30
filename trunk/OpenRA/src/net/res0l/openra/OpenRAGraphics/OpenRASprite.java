@@ -1,6 +1,7 @@
 package net.res0l.openra.OpenRAGraphics;
 
 import net.res0l.openra.Game;
+import net.res0l.openra.Size;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
@@ -12,7 +13,7 @@ public class OpenRASprite extends Sprite
 	public Sheet sheet;
 	public TextureChannel channel;
 	public Rectangle uv;
-	public Vector2 size;
+	public Size size;
 
 	Vector2[] uvhax;
 
@@ -23,10 +24,10 @@ public class OpenRASprite extends Sprite
 		this.channel = channel;
 
 		uv = new Rectangle(
-				(float)(bounds.x) / sheet.Size.x,
-				(float)(bounds.y) / sheet.Size.y,
-				(float)(bounds.width) / sheet.Size.x,
-				(float)(bounds.height) / sheet.Size.y);
+				(float)(bounds.x) / sheet.Size.Width,
+				(float)(bounds.y) / sheet.Size.Height,
+				(float)(bounds.width) / sheet.Size.Width,
+				(float)(bounds.height) / sheet.Size.Height);
 
 		uvhax = new Vector2[]
 		{
@@ -36,7 +37,7 @@ public class OpenRASprite extends Sprite
 			new Vector2( uv.width, uv.height ),
 		};
 
-		this.size = new Vector2(bounds.x, bounds.y);
+		this.size = new Size(bounds.x, bounds.y);
 	}
 
 	public Vector2 FastMapTextureCoords( int k )
@@ -59,7 +60,7 @@ public class OpenRASprite extends Sprite
         Game.Renderer.SpriteRenderer.DrawSprite(this, location, paletteIndex, this.size.mul(scale));
     }
 
-	public void DrawAt( Vector2 location, int paletteIndex, Vector2 size )
+	public void DrawAt( Vector2 location, int paletteIndex, Size size )
 	{
 		Game.Renderer.SpriteRenderer.DrawSprite( this, location, paletteIndex, size );
 	}
