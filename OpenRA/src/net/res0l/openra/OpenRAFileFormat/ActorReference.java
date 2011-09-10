@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import net.res0l.openra.Game;
+import net.res0l.openra.OpenRAGame.ActorInitializer.IActorInit;
+
 import org.yaml.snakeyaml.Yaml;
 
 public class ActorReference implements Iterable
@@ -31,9 +34,9 @@ public class ActorReference implements Iterable
 
 	static IActorInit LoadInit(String traitName, Yaml my)
 	{
-		var info = Game.CreateObject<IActorInit>(traitName + "Init");
+		Object info = Game.CreateObject(traitName + "Init");
 		FieldLoader.Load(info, my);
-		return info;
+		return (IActorInit)info;
 	}
 
 	public Yaml Save()
@@ -51,4 +54,10 @@ public class ActorReference implements Iterable
 
 	// for initialization syntax
 	public void Add( Object o ) { InitDict.Add( o ); }
+
+	@Override
+	public Iterator iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
