@@ -316,6 +316,11 @@ public class Game
 	String baseSupportDir = null;
 	public static String SupportDir;
 
+	public static Object CreateObject( String name )
+	{
+		return modData.ObjectCreator.CreateObject( name );
+	}
+	
 	public void CreateAndJoinServer(Settings settings, String map)
 	{
 		server = new Server(modData, settings, map);

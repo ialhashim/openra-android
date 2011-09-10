@@ -65,8 +65,8 @@ public class ModData
 	{
 		LoadScreen.Display();
 		
-		if (!AvailableMaps.containsKey(uid))
-			throw new Exception("Invalid map uid: " + uid);
+		//if (!AvailableMaps.containsKey(uid))
+		//	throw new Exception("Invalid map uid: " + uid);
 		
 		GameMap map = new GameMap(AvailableMaps.get(uid).Path);
 
@@ -76,7 +76,7 @@ public class ModData
 		if (previousMapMount != null) 
 			FileSystem.Unmount(previousMapMount);
 		
-		previousMapMount = FileSystem.OpenPackage(map.Path, Integer.MAX_VALUE);
+		/*previousMapMount = FileSystem.OpenPackage(map.Path, Integer.MAX_VALUE);
 		
 		FileSystem.Mount(previousMapMount);
 		
@@ -87,7 +87,7 @@ public class ModData
 	
 		Rules.LoadRules(Manifest, map);
 		SpriteLoader = new SpriteLoader( Rules.TileSets[map.Tileset].Extensions, SheetBuilder );
-		SequenceProvider.Initialize(Manifest.Sequences, map.Sequences);
+		SequenceProvider.Initialize(Manifest.Sequences, map.Sequences);*/
 		
 		return map;
 	}

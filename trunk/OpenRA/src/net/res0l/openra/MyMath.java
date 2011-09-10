@@ -23,4 +23,9 @@ public class MyMath {
 		return new Vector2(Math.min(r.width, Math.max(pos.x, r.x)),
             Math.min(r.height, Math.max(pos.y, r.y)));
 	}
+	
+	public static int clampRGBi (double value)
+    {
+        return (int)Math.max(0, Math.min(255, value));
+    }
 }

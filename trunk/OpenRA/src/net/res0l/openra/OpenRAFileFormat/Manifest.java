@@ -1,5 +1,6 @@
 package net.res0l.openra.OpenRAFileFormat;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.yaml.snakeyaml.Yaml;
@@ -17,14 +18,15 @@ public class Manifest
 	public Manifest(String[] mods)
 	{
 		Mods = mods;
-		
-		Yaml yaml = new Yaml();
-		
-		yaml.load("mods/" + mods[0] + "/mod.yaml");
-		
+
 		//var yaml = mods.Select(m => MiniYaml.FromFile("mods/" + m + "/mod.yaml")).Aggregate(MiniYaml.MergeLiberal);
 		
+		Yaml yaml = new Yaml();
+		yaml.load("mods/" + mods[0] + "/mod.yaml");
+		
+	
 		// Todo: Use fieldloader
+	
 		Folders = YamlList(yaml, "Folders");
 		Packages = YamlList(yaml, "Packages");
 		Rules = YamlList(yaml, "Rules");
@@ -42,13 +44,12 @@ public class Manifest
 
 		LoadScreen = yaml.First( x => x.Key == "LoadScreen" ).Value.Value;
 		
-		if (yaml.FirstOrDefault( x => x.Key == "TileSize" ) != null)
-			TileSize = int.Parse(yaml.First( x => x.Key == "TileSize" ).Value.Value);
+		TileSize = Integer.Parse(yaml.First("TileSize").Value.Value);
 	}
 
-	static String[] YamlList(List<Node> ys, String key)
+	static String[] YamlList(ArrayList<Node> ys, String key)
 	{
-		var y = ys.FirstOrDefault( x => x.Key == key );
+		Object y = ys.get(key);
 		
 		if( y == null )
 			return new String[ 0 ];
